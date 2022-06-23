@@ -1,13 +1,15 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
+package org.example;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Service
 public class ProcessService {
     static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -20,7 +22,6 @@ public class ProcessService {
 
         ObjectNode result = objectMapper.createObjectNode();
         result.set("occurrences", objectMapper.createObjectNode());
-
 
         int totalOcurrencies = 0;
 
@@ -39,21 +40,5 @@ public class ProcessService {
         result.put("total_occurrences", totalOcurrencies);
         return result;
     }
-
-    public static void maain(String[] args) throws JsonProcessingException {
-        ProcessService test = new ProcessService();
-        String jsonString = "{\n" +
-                "\"text\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\\nminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit\\nin voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\\ndeserunt mollit anim id est laborum.\",\n" +
-                "\"token\": \"re\"\n" +
-                "}";
-
-        JsonNode json = objectMapper.readTree(jsonString);
-
-        JsonNode result = test.procesarTexto(json);
-
-        System.out.println(result.asText());
-
-    }
-
 
 }

@@ -1,7 +1,9 @@
+package org.example;
+
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +15,7 @@ public class ProcessController {
     ProcessService processService;
 
     @PostMapping
-    public JsonNode process(ObjectNode obj) {
-        return processService.procesarTexto(obj);
+    public String process(@RequestBody JsonNode obj) {
+        return processService.procesarTexto(obj).toString();
     }
 }
