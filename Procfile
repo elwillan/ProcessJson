@@ -1,1 +1,1 @@
-web: java -jar build/libs/ProcessJson-0.0.1-SNAPSHOT.jar
+web: java -jar build/libs/PProcessJson-1.0-SNAPSHOT.jar
